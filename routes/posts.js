@@ -55,13 +55,17 @@ const posts = [
 
 //index
 router.get("/", (req, res) => {
-  res.send("Lista dei post");
+  res.json(posts);
 });
 
 //show
 router.get("/:id", (req, res) => {
   const id = req.params.id;
-  res.send(`Stai vedendo il post con id : ${id}`);
+  posts.forEach((post) => {
+    if (id == post.id) {
+      res.json(post);
+    }
+  });
 });
 
 //create
